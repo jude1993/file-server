@@ -5,26 +5,23 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Utils {
     /**
      * 获取传入路径文档信息
      * */
     public static Document getAllFile(String path){
-        Document document = new Document();
+        return new Document(new File(path));
+    }
+
+    /**
+     *
+     * */
+    public static Document getChildFiles(String path){
         File file = new File(path);
-        document.setName(file.getName());
-        if(file.isDirectory()){
-            List<Document> documents = new ArrayList<>();
-            Arrays.stream(Objects.requireNonNull(file.listFiles())).forEach(f -> {
-                documents.add(getAllFile(f.getPath()));
-            });
-            document.setChildFile(documents);
-            document.setIsFile(false);
-            return document;
-        }
-        document.setIsFile(true);
-        return document;
+        return new Document(file.listFiles(),file.getName(),file.isFile(),file.getPath());
     }
 
 }
