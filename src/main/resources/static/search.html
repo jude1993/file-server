@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>search</title>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+</head>
+
+<body>
+<div id="search" align="center">
+    <form id="searchParams" action="http://localhost:8080/download/file/down" method="post" >
+        <input type="hidden" id="path" value="E:\tools\androidSDK\tools\file.txt">
+        <input type="hidden" id="name" value="file.txt">
+    </form>
+    <input type="button" id="button" value="download">
+</div>
+</body>
+
+<script>
+    $(document).ready(function () {
+        $("#button").click(function () {
+            var data = JSON.stringify({
+                "path": $("#path").val(),
+                "name": $("#name").val()
+            });
+            $.ajax({
+                type: 'post',
+                url: "http://localhost:8080/download/file/down",
+                cache: false,
+                contentType: 'application/json',
+                data: data,
+                dataType: 'json',
+                success: function () {
+
+                },
+                error: function () {
+                    alert("请求失败")
+                }
+            })
+        });
+    });
+
+</script>
+</html>
