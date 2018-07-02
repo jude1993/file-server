@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("download")
 public class FileController {
 
-    @RequestMapping(value="file/{path}",method = RequestMethod.GET)
-    public Document file(@PathVariable String path){
+    @RequestMapping(value="file",method = RequestMethod.GET)
+    public Document file(){
 
-        return Utils.getAllFile("D:\\"+path);
+        return Utils.getAllFile("/data");
     }
 
     @RequestMapping("echo")
