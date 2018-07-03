@@ -2,7 +2,7 @@ package com.jude.fileserver.controller;
 
 import com.jude.fileserver.file.client.Document;
 import com.jude.fileserver.file.client.Utils;
-import com.jude.fileserver.file.utils.Constants;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,24 +10,27 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
 @RestController
-@RequestMapping("download/file")
+@RequestMapping("file")
 public class FileController {
 
-    @RequestMapping(value="/all",method = RequestMethod.POST)
+    @Value("${ROOT_PATH}")
+    private String rootPath;
+
+    @RequestMapping(value="/list",method = RequestMethod.POST)
     public Document all(@RequestParam("path") String path){
 
     return Utils.getAllFile(path);
     }
 
-    @RequestMapping(value="/single",method = RequestMethod.POST)
+    @RequestMapping(value="/detail",method = RequestMethod.POST)
     public Document single(@RequestParam("path") String path){
     if (StringUtils.isEmpty(path)) {
-        return Utils.getChildFiles(Constants.root);
+        return Utils.getChildFiles(rootPath);
     }
         return Utils.getChildFiles(path);
     }
 
-    @RequestMapping(value="/down",method = RequestMethod.POST)
+    @RequestMapping(value="/download",method = RequestMethod.POST)
     public void download(HttpServletResponse response,@RequestBody Document document){
         doDownload(response,document.getPath(),document.getName());
     }
