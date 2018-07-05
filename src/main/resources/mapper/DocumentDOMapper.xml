@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.jude.fileserver.mapper.DocumentDOMapper" >
+  <resultMap id="BaseResultMap" type="com.jude.fileserver.bean.dao.DocumentDO" >
+    <id column="id" property="id" jdbcType="BIGINT" />
+    <result column="file_name" property="fileName" jdbcType="VARCHAR" />
+    <result column="path" property="path" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, file_name, path
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from document
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from document
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.jude.fileserver.bean.dao.DocumentDO" >
+    insert into document (id, file_name, path
+      )
+    values (#{id,jdbcType=BIGINT}, #{fileName,jdbcType=VARCHAR}, #{path,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jude.fileserver.bean.dao.DocumentDO" >
+    insert into document
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="fileName != null" >
+        file_name,
+      </if>
+      <if test="path != null" >
+        path,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="fileName != null" >
+        #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        #{path,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jude.fileserver.bean.dao.DocumentDO" >
+    update document
+    <set >
+      <if test="fileName != null" >
+        file_name = #{fileName,jdbcType=VARCHAR},
+      </if>
+      <if test="path != null" >
+        path = #{path,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jude.fileserver.bean.dao.DocumentDO" >
+    update document
+    set file_name = #{fileName,jdbcType=VARCHAR},
+      path = #{path,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

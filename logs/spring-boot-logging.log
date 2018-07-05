@@ -1,0 +1,109 @@
+2018-07-05 18:04:32.491  INFO 14820 --- [main] c.jude.fileserver.FileServerApplication  : Starting FileServerApplication on judepc with PID 14820 (E:\idea\file-server\target\classes started by jude in E:\idea\file-server)
+2018-07-05 18:04:32.510  INFO 14820 --- [main] c.jude.fileserver.FileServerApplication  : No active profile set, falling back to default profiles: default
+2018-07-05 18:04:33.792  WARN 14820 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.jude.fileserver]' package. Please check your configuration.
+2018-07-05 18:04:35.251  INFO 14820 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-05 18:04:35.252  INFO 14820 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-07-05 18:04:35.260  INFO 14820 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_171\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jdk1.7.0_80\bin;C:\Program Files (x86)\Common Files\NetSarang;D:\Oracle\app\oracle\product\10.2.0\server\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Calibre2\;C:\Program Files\MySQL\MySQL Server 5.5\bin;%EXE4J_JAVA_HOME%;C:\Program Files\VisualSVN Server\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Git\cmd;C:\Program Files\MYSQL\mysql-5.7.19\bin;C:\Program Files\MongoDB\Server\3.4\bin;E:\tools\node.js\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\erl6.2\bin;E:\tools\RabbitMQ Server\rabbitmq_server-3.4.1\sbin;E:\tools\apache-maven-3.3.9\bin;E:\tools\putty\;C:\Users\jude.JUDEPC\AppData\Local\Microsoft\WindowsApps;E:\tools\Fiddler;C:\Users\jude.JUDEPC\AppData\Local\GitHubDesktop\bin;.]
+2018-07-05 18:04:35.391  INFO 14820 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-05 18:04:35.693  WARN 14820 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentController': Unsatisfied dependency expressed through field 'documentService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.jude.fileserver.service.interf.DocumentService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2018-07-05 18:04:35.698  INFO 14820 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-07-05 18:04:35.730  WARN 14820 --- [localhost-startStop-1] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2018-07-05 18:04:35.929 ERROR 14820 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field documentService in com.jude.fileserver.controller.DocumentController required a bean of type 'com.jude.fileserver.service.interf.DocumentService' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.jude.fileserver.service.interf.DocumentService' in your configuration.
+
+2018-07-05 18:05:24.615  INFO 3084 --- [main] c.jude.fileserver.FileServerApplication  : Starting FileServerApplication on judepc with PID 3084 (E:\idea\file-server\target\classes started by jude in E:\idea\file-server)
+2018-07-05 18:05:24.622  INFO 3084 --- [main] c.jude.fileserver.FileServerApplication  : No active profile set, falling back to default profiles: default
+2018-07-05 18:05:25.725  WARN 3084 --- [main] o.m.s.mapper.ClassPathMapperScanner      : No MyBatis mapper was found in '[com.jude.fileserver]' package. Please check your configuration.
+2018-07-05 18:05:26.577  INFO 3084 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-05 18:05:26.577  INFO 3084 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-07-05 18:05:26.584  INFO 3084 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_171\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jdk1.7.0_80\bin;C:\Program Files (x86)\Common Files\NetSarang;D:\Oracle\app\oracle\product\10.2.0\server\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Calibre2\;C:\Program Files\MySQL\MySQL Server 5.5\bin;%EXE4J_JAVA_HOME%;C:\Program Files\VisualSVN Server\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Git\cmd;C:\Program Files\MYSQL\mysql-5.7.19\bin;C:\Program Files\MongoDB\Server\3.4\bin;E:\tools\node.js\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\erl6.2\bin;E:\tools\RabbitMQ Server\rabbitmq_server-3.4.1\sbin;E:\tools\apache-maven-3.3.9\bin;E:\tools\putty\;C:\Users\jude.JUDEPC\AppData\Local\Microsoft\WindowsApps;E:\tools\Fiddler;C:\Users\jude.JUDEPC\AppData\Local\GitHubDesktop\bin;.]
+2018-07-05 18:05:26.696  INFO 3084 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-05 18:05:26.923  WARN 3084 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentController': Unsatisfied dependency expressed through field 'documentService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentServiceImpl': Unsatisfied dependency expressed through field 'documentDOMapper'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.jude.fileserver.mapper.DocumentDOMapper' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2018-07-05 18:05:26.927  INFO 3084 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-07-05 18:05:26.936  WARN 3084 --- [localhost-startStop-1] o.a.c.loader.WebappClassLoaderBase       : The web application [ROOT] appears to have started a thread named [Abandoned connection cleanup thread] but has failed to stop it. This is very likely to create a memory leak. Stack trace of thread:
+ java.lang.Object.wait(Native Method)
+ java.lang.ref.ReferenceQueue.remove(ReferenceQueue.java:143)
+ com.mysql.jdbc.AbandonedConnectionCleanupThread.run(AbandonedConnectionCleanupThread.java:43)
+2018-07-05 18:05:27.045 ERROR 3084 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field documentDOMapper in com.jude.fileserver.service.impl.DocumentServiceImpl required a bean of type 'com.jude.fileserver.mapper.DocumentDOMapper' that could not be found.
+
+
+Action:
+
+Consider defining a bean of type 'com.jude.fileserver.mapper.DocumentDOMapper' in your configuration.
+
+2018-07-05 18:07:32.429  INFO 3232 --- [main] c.jude.fileserver.FileServerApplication  : Starting FileServerApplication on judepc with PID 3232 (E:\idea\file-server\target\classes started by jude in E:\idea\file-server)
+2018-07-05 18:07:32.434  INFO 3232 --- [main] c.jude.fileserver.FileServerApplication  : No active profile set, falling back to default profiles: default
+2018-07-05 18:07:34.464  INFO 3232 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-05 18:07:34.465  INFO 3232 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-07-05 18:07:34.472  INFO 3232 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_171\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jdk1.7.0_80\bin;C:\Program Files (x86)\Common Files\NetSarang;D:\Oracle\app\oracle\product\10.2.0\server\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Calibre2\;C:\Program Files\MySQL\MySQL Server 5.5\bin;%EXE4J_JAVA_HOME%;C:\Program Files\VisualSVN Server\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Git\cmd;C:\Program Files\MYSQL\mysql-5.7.19\bin;C:\Program Files\MongoDB\Server\3.4\bin;E:\tools\node.js\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\erl6.2\bin;E:\tools\RabbitMQ Server\rabbitmq_server-3.4.1\sbin;E:\tools\apache-maven-3.3.9\bin;E:\tools\putty\;C:\Users\jude.JUDEPC\AppData\Local\Microsoft\WindowsApps;E:\tools\Fiddler;C:\Users\jude.JUDEPC\AppData\Local\GitHubDesktop\bin;.]
+2018-07-05 18:07:34.587  INFO 3232 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-05 18:07:35.369  WARN 3232 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fileController': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'ROOT_PATH' in value "${ROOT_PATH}"
+2018-07-05 18:07:35.372  INFO 3232 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2018-07-05 18:07:35.434 ERROR 3232 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'fileController': Injection of autowired dependencies failed; nested exception is java.lang.IllegalArgumentException: Could not resolve placeholder 'ROOT_PATH' in value "${ROOT_PATH}"
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:379) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.populateBean(AbstractAutowireCapableBeanFactory.java:1350) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.doCreateBean(AbstractAutowireCapableBeanFactory.java:580) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.AbstractAutowireCapableBeanFactory.createBean(AbstractAutowireCapableBeanFactory.java:503) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.lambda$doGetBean$0(AbstractBeanFactory.java:317) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultSingletonBeanRegistry.getSingleton(DefaultSingletonBeanRegistry.java:222) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.doGetBean(AbstractBeanFactory.java:315) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.getBean(AbstractBeanFactory.java:199) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.preInstantiateSingletons(DefaultListableBeanFactory.java:760) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.finishBeanFactoryInitialization(AbstractApplicationContext.java:869) ~[spring-context-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:550) ~[spring-context-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:140) ~[spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:759) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:395) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:327) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1255) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1243) [spring-boot-2.0.3.RELEASE.jar:2.0.3.RELEASE]
+	at com.jude.fileserver.FileServerApplication.main(FileServerApplication.java:12) [classes/:na]
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'ROOT_PATH' in value "${ROOT_PATH}"
+	at org.springframework.util.PropertyPlaceholderHelper.parseStringValue(PropertyPlaceholderHelper.java:172) ~[spring-core-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.util.PropertyPlaceholderHelper.replacePlaceholders(PropertyPlaceholderHelper.java:124) ~[spring-core-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.core.env.AbstractPropertyResolver.doResolvePlaceholders(AbstractPropertyResolver.java:237) ~[spring-core-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.core.env.AbstractPropertyResolver.resolveRequiredPlaceholders(AbstractPropertyResolver.java:211) ~[spring-core-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.context.support.PropertySourcesPlaceholderConfigurer.lambda$processProperties$0(PropertySourcesPlaceholderConfigurer.java:175) ~[spring-context-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.AbstractBeanFactory.resolveEmbeddedValue(AbstractBeanFactory.java:839) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.doResolveDependency(DefaultListableBeanFactory.java:1086) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory.resolveDependency(DefaultListableBeanFactory.java:1065) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor$AutowiredFieldElement.inject(AutowiredAnnotationBeanPostProcessor.java:584) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.beans.factory.annotation.InjectionMetadata.inject(InjectionMetadata.java:91) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	at org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor.postProcessPropertyValues(AutowiredAnnotationBeanPostProcessor.java:373) ~[spring-beans-5.0.7.RELEASE.jar:5.0.7.RELEASE]
+	... 17 common frames omitted
+
+2018-07-05 18:08:25.378  INFO 11872 --- [main] c.jude.fileserver.FileServerApplication  : Starting FileServerApplication on judepc with PID 11872 (E:\idea\file-server\target\classes started by jude in E:\idea\file-server)
+2018-07-05 18:08:25.426  INFO 11872 --- [main] c.jude.fileserver.FileServerApplication  : No active profile set, falling back to default profiles: default
+2018-07-05 18:08:27.653  INFO 11872 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-07-05 18:08:27.653  INFO 11872 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-07-05 18:08:27.660  INFO 11872 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_171\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jdk1.7.0_80\bin;C:\Program Files (x86)\Common Files\NetSarang;D:\Oracle\app\oracle\product\10.2.0\server\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Calibre2\;C:\Program Files\MySQL\MySQL Server 5.5\bin;%EXE4J_JAVA_HOME%;C:\Program Files\VisualSVN Server\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Git\cmd;C:\Program Files\MYSQL\mysql-5.7.19\bin;C:\Program Files\MongoDB\Server\3.4\bin;E:\tools\node.js\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\erl6.2\bin;E:\tools\RabbitMQ Server\rabbitmq_server-3.4.1\sbin;E:\tools\apache-maven-3.3.9\bin;E:\tools\putty\;C:\Users\jude.JUDEPC\AppData\Local\Microsoft\WindowsApps;E:\tools\Fiddler;C:\Users\jude.JUDEPC\AppData\Local\GitHubDesktop\bin;.]
+2018-07-05 18:08:27.770  INFO 11872 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-07-05 18:08:29.435  INFO 11872 --- [main] c.jude.fileserver.FileServerApplication  : Started FileServerApplication in 4.958 seconds (JVM running for 6.394)
+2018-07-05 18:08:55.139  INFO 11872 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring FrameworkServlet 'dispatcherServlet'
+2018-07-05 18:10:08.213  INFO 11872 --- [http-nio-8080-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2018-07-05 18:10:08.571  INFO 11872 --- [http-nio-8080-exec-5] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
