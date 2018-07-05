@@ -1,0 +1,51 @@
+#作用:application_prod.yml文件起效
+#spring:
+  #profiles:
+    #active: prod
+
+
+server:
+  port: 8080
+  tomcat:
+    uri-encoding: UTF-8
+
+#数据源
+spring:
+  datasource:
+    url: jdbc:mysql://111.231.66.26:3306/file_server?useUnicode=true&characterEncoding=utf8&useSSL=false
+    username: root
+    password: 123456
+    driver-class-name: com.mysql.jdbc.Driver
+    hikari:
+            pool-name: HikariCP
+            auto-commit: false
+
+  ro-datasource:
+        jdbc-url: jdbc:mysql://localhost:3306/file_server
+        username: ro
+        password: ro_password
+        driver-class-name: com.mysql.jdbc.Driver
+        hikari:
+          pool-name: HikariCP
+          auto-commit: false
+
+
+#常量
+message:
+  data:
+    path: /data
+
+## Mybatis
+mybatis:
+  typeAliasesPackage: org.spring.springboot.domain
+  mapperLocations: classpath:mapper/*.xml
+
+
+## 日志
+logging:
+  level:
+    org:
+      springframework: WARN
+      spring:
+        springboot.dao: DEBUG
+  file: logs/spring-boot-logging.log

@@ -27,8 +27,8 @@ public class Jupload {
         user.setName("admin");
         //密码 如果不设置密码就是匿名用户
         user.setPassword("123456");
-    // 用户主目录
-    user.setHomeDirectory("/data");
+        // 用户主目录
+        user.setHomeDirectory("E:\\");
 
         List<Authority> authorities = new ArrayList<Authority>();
         //增加写权限

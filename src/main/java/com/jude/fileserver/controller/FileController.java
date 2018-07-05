@@ -2,23 +2,18 @@ package com.jude.fileserver.controller;
 
 import com.jude.fileserver.file.client.Document;
 import com.jude.fileserver.file.client.Utils;
-import org.apache.tomcat.util.http.fileupload.FileItem;
-import org.apache.tomcat.util.http.fileupload.disk.DiskFileItemFactory;
-import org.apache.tomcat.util.http.fileupload.servlet.ServletFileUpload;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
-import java.util.List;
 
 @RestController
 @RequestMapping("file")
 public class FileController {
 
-    @Value("${ROOT_PATH}")
+    @Value("${message.data.path}")
     private String rootPath;
 
     @RequestMapping(value="/list",method = RequestMethod.POST)

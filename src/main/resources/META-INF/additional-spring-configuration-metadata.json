@@ -1,0 +1,9 @@
+{
+  "properties": [
+    {
+      "name": "message.data.path",
+      "type": "java.lang.String",
+      "description": "Description for message.data.path."
+    }
+  ]
+}
