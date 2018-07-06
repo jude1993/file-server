@@ -9,6 +9,9 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletResponse;
 import java.io.*;
 
+/**
+ * @author jude
+ */
 @RestController
 @RequestMapping("file")
 public class FileController {
@@ -59,7 +62,9 @@ public class FileController {
             e.printStackTrace();
         } finally {
             try {
-                bis.close();
+                if(bis!=null) {
+                    bis.close();
+                }
             } catch (IOException e) {
                 e.printStackTrace();
             }

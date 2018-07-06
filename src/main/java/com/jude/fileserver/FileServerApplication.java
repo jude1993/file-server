@@ -15,6 +15,9 @@ import javax.sql.DataSource;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author jude
+ */
 @SpringBootApplication
 @MapperScan("com.jude.fileserver.mapper")
 public class FileServerApplication {
