@@ -27,13 +27,13 @@ public class FileServerApplication {
     }
 
     @Bean("masterDataSource")
-    @ConfigurationProperties("spring.datasource")
+    @ConfigurationProperties(prefix = "spring.datasource")
     DataSource masterDataSource(){
         return DataSourceBuilder.create().build();
     }
 
     @Bean("slaveDataSource")
-    @ConfigurationProperties("spring.ro-datasource")
+    @ConfigurationProperties(prefix = "spring.ro-datasource")
     DataSource slaveDataSource(){
         return DataSourceBuilder.create().build();
     }

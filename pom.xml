@@ -120,6 +120,18 @@
                     </dependency>
                 </dependencies>
             </plugin>
+
+            <!--Jib自动生成DockerFile文件-->
+            <plugin>
+                <groupId>com.google.cloud.tools</groupId>
+                <artifactId>jib-maven-plugin</artifactId>
+                <version>0.9.0</version>
+                <configuration>
+                    <to>
+                        <image>gcr.io/my-project/image-built-with-jib</image>
+                    </to>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

@@ -22,8 +22,8 @@ spring:
 
   ro-datasource:
         jdbc-url: jdbc:mysql://localhost:3306/file_server
-        username: ro
-        password: ro_password
+        username: root
+        password: jude1993
         driver-class-name: com.mysql.jdbc.Driver
         hikari:
           pool-name: HikariCP
