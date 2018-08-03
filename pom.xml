@@ -94,8 +94,8 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
 
-            <!--mybatis-generator-->
-            <plugin>
+
+           <!-- <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
                 <version>1.3.2</version>
@@ -119,7 +119,7 @@
                         <version>1.3.2</version>
                     </dependency>
                 </dependencies>
-            </plugin>
+            </plugin>-->
 
             <!--Jib自动生成DockerFile文件-->
             <plugin>
