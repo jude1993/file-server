@@ -26,7 +26,7 @@ public class FileServerApplication {
         SpringApplication.run(FileServerApplication.class, args);
     }
 
-    @Bean("masterDataSource")
+    /*@Bean("masterDataSource")
     @ConfigurationProperties(prefix = "spring.datasource")
     DataSource masterDataSource(){
         return DataSourceBuilder.create().build();
@@ -51,6 +51,6 @@ public class FileServerApplication {
         routing.setTargetDataSources(map);
         routing.setDefaultTargetDataSource(masterDataSource);
         return routing;
-    }
+    }*/
 
 }
