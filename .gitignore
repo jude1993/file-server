@@ -26,3 +26,4 @@
 src/main/resources/templates/
 src/test/java/com/example/
 /logs/
+/logs/spring-boot-logging.log
