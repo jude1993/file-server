@@ -49,3 +49,15 @@ logging:
       spring:
         springboot.dao: DEBUG
   file: logs/spring-boot-logging.log
+
+##邮件参数
+  mail:
+    connect:
+      senderToken: mzjswulxbichbeef
+      senderAddress: 893860859@qq.com
+      senderAccount: 893860859@qq.com
+      recipientsAddress: 8615736879498@kindle.cn
+    args:
+      authMial: true
+      hostMail: smtp.qq.com
+      protocolMail: smtp

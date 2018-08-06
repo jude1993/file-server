@@ -17,22 +17,22 @@
         <!--数据库链接URL，用户名、密码 -->
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://111.231.66.26:3306/file_server" userId="root"
-                        password="123456"/>
+                        password="jude1993"/>
 
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
         <!-- 生成实体类的包名及位置-->
-        <javaModelGenerator targetPackage="com.jude.fileserver.bean.dao" targetProject="src/main/java">
+        <javaModelGenerator targetPackage="com.jude.file.bean.mail.dao" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
         <!-- 生成映射文件的包名及位置-->
-        <sqlMapGenerator targetPackage="mapper" targetProject="src/main/resources">
+        <sqlMapGenerator targetPackage="mapper.mail" targetProject="src/main/resources">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
         <!-- 生成Dao的包名及位置-->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.jude.fileserver.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.jude.file.mapper.mail" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
@@ -82,14 +82,36 @@
                                 replaceString=""/>&ndash;&gt;
         </table>-->
 
-       <!-- <table tableName="level" domainObjectName="Level"
+       <table tableName="user" domainObjectName="User"
                enableCountByExample="false" enableUpdateByExample="false"
                enableDeleteByExample="false" enableSelectByExample="false"
                selectByExampleQueryId="false">
 
             <property name="useActualColumnNames" value="false"/>
-            &lt;!&ndash;<columnRenamingRule searchString="^D_"
-                                replaceString=""/>&ndash;&gt;
-        </table>-->
+            <columnRenamingRule searchString="^D_"
+                                replaceString=""/>
+        </table>
+
+        <table tableName="push_log" domainObjectName="PushLog"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+
+            <property name="useActualColumnNames" value="false"/>
+            <columnRenamingRule searchString="^D_"
+                                replaceString=""/>
+        </table>
+
+        <table tableName="kindle_config" domainObjectName="KindleConfig"
+               enableCountByExample="false" enableUpdateByExample="false"
+               enableDeleteByExample="false" enableSelectByExample="false"
+               selectByExampleQueryId="false">
+
+            <property name="useActualColumnNames" value="false"/>
+            <columnRenamingRule searchString="^D_"
+                                            replaceString=""/>
+        </table>
+
+
     </context>
 </generatorConfiguration>

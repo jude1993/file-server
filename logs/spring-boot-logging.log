@@ -1,34 +1,7 @@
-2018-07-06 16:15:22.948  INFO 3772 --- [main] c.jude.fileserver.FileServerApplication  : Starting FileServerApplication on judepc with PID 3772 (E:\idea\file-server\target\classes started by jude in E:\idea\file-server)
-2018-07-06 16:15:22.962  INFO 3772 --- [main] c.jude.fileserver.FileServerApplication  : No active profile set, falling back to default profiles: default
-2018-07-06 16:15:26.249  INFO 3772 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2018-07-06 16:15:26.250  INFO 3772 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
-2018-07-06 16:15:26.258  INFO 3772 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_171\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jdk1.7.0_80\bin;C:\Program Files (x86)\Common Files\NetSarang;D:\Oracle\app\oracle\product\10.2.0\server\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Calibre2\;C:\Program Files\MySQL\MySQL Server 5.5\bin;%EXE4J_JAVA_HOME%;C:\Program Files\VisualSVN Server\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Git\cmd;C:\Program Files\MYSQL\mysql-5.7.19\bin;C:\Program Files\MongoDB\Server\3.4\bin;E:\tools\node.js\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\erl6.2\bin;E:\tools\RabbitMQ Server\rabbitmq_server-3.4.1\sbin;E:\tools\apache-maven-3.3.9\bin;E:\tools\putty\;C:\Users\jude.JUDEPC\AppData\Local\Microsoft\WindowsApps;E:\tools\Fiddler;C:\Users\jude.JUDEPC\AppData\Local\GitHubDesktop\bin;.]
-2018-07-06 16:15:26.485  INFO 3772 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2018-07-06 16:15:26.991  WARN 3772 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentController': Unsatisfied dependency expressed through field 'documentService'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentServiceImpl': Unsatisfied dependency expressed through field 'documentDOMapper'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'documentDOMapper' defined in file [E:\idea\file-server\target\classes\com\jude\fileserver\mapper\DocumentDOMapper.class]: Unsatisfied dependency expressed through bean property 'sqlSessionFactory'; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'sqlSessionFactory' defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]: Unsatisfied dependency expressed through method 'sqlSessionFactory' parameter 0; nested exception is org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'primaryDataSource' defined in com.jude.fileserver.FileServerApplication: Unsatisfied dependency expressed through method 'primaryDataSource' parameter 0; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'masterDataSource' defined in com.jude.fileserver.FileServerApplication: Initialization of bean failed; nested exception is org.springframework.beans.factory.BeanCreationException: Error creating bean with name 'org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker': Invocation of init method failed; nested exception is org.springframework.beans.factory.BeanCurrentlyInCreationException: Error creating bean with name 'primaryDataSource': Requested bean is currently in creation: Is there an unresolvable circular reference?
-2018-07-06 16:15:26.994  INFO 3772 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
-2018-07-06 16:15:27.016 ERROR 3772 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
-
-***************************
-APPLICATION FAILED TO START
-***************************
-
-Description:
-
-The dependencies of some of the beans in the application context form a cycle:
-
-   documentController (field private com.jude.fileserver.service.interf.DocumentService com.jude.fileserver.controller.DocumentController.documentService)
-      ↓
-   documentServiceImpl (field private com.jude.fileserver.mapper.DocumentDOMapper com.jude.fileserver.service.impl.DocumentServiceImpl.documentDOMapper)
-      ↓
-   documentDOMapper defined in file [E:\idea\file-server\target\classes\com\jude\fileserver\mapper\DocumentDOMapper.class]
-      ↓
-   sqlSessionFactory defined in class path resource [org/mybatis/spring/boot/autoconfigure/MybatisAutoConfiguration.class]
-┌─────┐
-|  primaryDataSource defined in com.jude.fileserver.FileServerApplication
-↑     ↓
-|  masterDataSource defined in com.jude.fileserver.FileServerApplication
-↑     ↓
-|  org.springframework.boot.autoconfigure.jdbc.DataSourceInitializerInvoker
-└─────┘
-
-
+2018-08-03 16:49:55.059  INFO 11628 --- [main] c.jude.fileserver.FileServerApplication  : Starting FileServerApplication on judepc with PID 11628 (E:\idea\file-server\target\classes started by jude in E:\idea\file-server)
+2018-08-03 16:49:55.065  INFO 11628 --- [main] c.jude.fileserver.FileServerApplication  : No active profile set, falling back to default profiles: default
+2018-08-03 16:49:58.037  INFO 11628 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2018-08-03 16:49:58.038  INFO 11628 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet Engine: Apache Tomcat/8.5.31
+2018-08-03 16:49:58.043  INFO 11628 --- [localhost-startStop-1] o.a.catalina.core.AprLifecycleListener   : The APR based Apache Tomcat Native library which allows optimal performance in production environments was not found on the java.library.path: [C:\Program Files\Java\jdk1.8.0_171\bin;C:\WINDOWS\Sun\Java\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\Program Files\Java\jdk1.7.0_80\bin;C:\Program Files (x86)\Common Files\NetSarang;D:\Oracle\app\oracle\product\10.2.0\server\bin;C:\WINDOWS\system32\cmd.exe;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files\Intel\WiFi\bin\;C:\Program Files\Common Files\Intel\WirelessCommon\;C:\Program Files (x86)\Calibre2\;C:\Program Files\MySQL\MySQL Server 5.5\bin;%EXE4J_JAVA_HOME%;C:\Program Files\VisualSVN Server\bin;C:\Program Files\TortoiseSVN\bin;C:\Program Files\Git\cmd;C:\Program Files\MYSQL\mysql-5.7.19\bin;C:\Program Files\MongoDB\Server\3.4\bin;E:\tools\node.js\;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\erl6.2\bin;E:\tools\RabbitMQ Server\rabbitmq_server-3.4.1\sbin;E:\tools\apache-maven-3.3.9\bin;E:\tools\putty\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\Windows\SysWOW64;E:\tools\openSSH\bin;C:\Users\jude.JUDEPC\AppData\Local\Microsoft\WindowsApps;E:\tools\Fiddler;C:\Users\jude.JUDEPC\AppData\Local\GitHubDesktop\bin;.]
+2018-08-03 16:49:58.253  INFO 11628 --- [localhost-startStop-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2018-08-03 16:50:00.131  INFO 11628 --- [main] c.jude.fileserver.FileServerApplication  : Started FileServerApplication in 6.411 seconds (JVM running for 7.904)

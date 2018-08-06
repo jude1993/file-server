@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jude.file.mapper.mail.KindleConfigMapper">
+  <resultMap id="BaseResultMap" type="com.jude.file.bean.mail.dao.KindleConfig">
+    <result column="USER_ID" jdbcType="BIGINT" property="userId" />
+    <result column="KINDLE_EMAIL" jdbcType="VARCHAR" property="kindleEmail" />
+    <result column="STATUS" jdbcType="BIT" property="status" />
+  </resultMap>
+
+  <sql id="Base_Column_List">
+    USER_ID, KINDLE_EMAIL, STATUS
+  </sql>
+
+  <insert id="insert" parameterType="com.jude.file.bean.mail.dao.KindleConfig">
+    insert into kindle_config (USER_ID, KINDLE_EMAIL, STATUS
+      )
+    values (#{userId,jdbcType=BIGINT}, #{kindleEmail,jdbcType=VARCHAR}, #{status,jdbcType=BIT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.jude.file.bean.mail.dao.KindleConfig">
+    insert into kindle_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        USER_ID,
+      </if>
+      <if test="kindleEmail != null">
+        KINDLE_EMAIL,
+      </if>
+      <if test="status != null">
+        STATUS,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="kindleEmail != null">
+        #{kindleEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BIT},
+      </if>
+    </trim>
+  </insert>
+  <select id="selectByUserId" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from kindle_config
+    where USER_ID = #{userId,jdbcType=BIGINT}
+  </select>
+</mapper>
