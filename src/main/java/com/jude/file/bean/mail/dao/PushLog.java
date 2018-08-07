@@ -27,11 +27,14 @@ public class PushLog {
 
     private Integer retry;
 
-    public PushLog(Long userId, String emailAddress, String fileName, Boolean success, Date pushTime){
+    private String content;
+
+    public PushLog(Long userId, String emailAddress, String fileName, Boolean success, Date pushTime, String content){
         this.userId = userId;
         this.emailAddress = emailAddress;
         this.fileName = fileName;
         this.success = success;
         this.pushTime = pushTime;
+        this.content = content;
     }
 }
