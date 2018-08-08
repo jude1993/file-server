@@ -1,14 +1,14 @@
 package com.jude.file.mapper.mail;
 
-import com.jude.file.bean.mail.dao.KindleConfig;
+import com.jude.file.bean.mail.dao.KindleConfigDO;
 
 /**
  * @author jude
  */
 public interface KindleConfigMapper {
-    int insert(KindleConfig record);
+    int insert(KindleConfigDO record);
 
-    int insertSelective(KindleConfig record);
+    int insertSelective(KindleConfigDO record);
 
-    KindleConfig selectByUserId(Long userId);
+    KindleConfigDO selectByUserId(Long userId);
 }

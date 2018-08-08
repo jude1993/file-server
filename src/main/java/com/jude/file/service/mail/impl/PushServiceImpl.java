@@ -3,13 +3,11 @@ package com.jude.file.service.mail.impl;
 import com.alibaba.fastjson.JSON;
 import com.jude.file.bean.ResponseBean;
 import com.jude.file.bean.mail.bo.MailBO;
-import com.jude.file.bean.mail.dao.KindleConfig;
+import com.jude.file.bean.mail.dao.KindleConfigDO;
 import com.jude.file.bean.mail.dao.PushLog;
 import com.jude.file.common.LogUtils;
 import com.jude.file.common.MailUtils;
 import com.jude.file.mail.Constants;
-import com.jude.file.mail.KindlePush;
-import com.jude.file.mapper.UserMapper;
 import com.jude.file.mapper.mail.KindleConfigMapper;
 import com.jude.file.service.mail.interf.PushLogService;
 import com.jude.file.service.mail.interf.PushService;
@@ -60,10 +58,10 @@ public class PushServiceImpl implements PushService {
     public ResponseBean push(Long userId, MailBO mailBO) {
         LogUtils.info(logger,"userID={},推送{}",userId,JSON.toJSONString(mailBO));
         /*获取用户设置的邮箱*/
-        KindleConfig kindleConfig = configMapper.selectByUserId(userId);
-        if(!kindleConfig.getStatus()){
+        KindleConfigDO kindleConfig = configMapper.selectByUserId(userId);
+        if(kindleConfig == null || !kindleConfig.getStatus()){
             pushLogService.insert(new PushLog(userId,kindleConfig.getKindleEmail(),getFileName(mailBO.getFilePath()),false,new Date(),"未将指定邮箱添加亚马逊到信任邮箱列表"));
-            return ResponseBean.fail("未将指定邮箱添加亚马逊到信任邮箱列表",false);
+            return ResponseBean.fail("未设置kindle邮箱",false);
         }
         /*推送*/
         /*邮件参数*/

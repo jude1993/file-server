@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jude.file.mapper.mail.KindleConfigMapper">
-  <resultMap id="BaseResultMap" type="com.jude.file.bean.mail.dao.KindleConfig">
+  <resultMap id="BaseResultMap" type="com.jude.file.bean.mail.dao.KindleConfigDO">
     <result column="USER_ID" jdbcType="BIGINT" property="userId" />
     <result column="KINDLE_EMAIL" jdbcType="VARCHAR" property="kindleEmail" />
     <result column="STATUS" jdbcType="BIT" property="status" />
@@ -11,13 +11,13 @@
     USER_ID, KINDLE_EMAIL, STATUS
   </sql>
 
-  <insert id="insert" parameterType="com.jude.file.bean.mail.dao.KindleConfig">
+  <insert id="insert" parameterType="com.jude.file.bean.mail.dao.KindleConfigDO">
     insert into kindle_config (USER_ID, KINDLE_EMAIL, STATUS
       )
     values (#{userId,jdbcType=BIGINT}, #{kindleEmail,jdbcType=VARCHAR}, #{status,jdbcType=BIT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.jude.file.bean.mail.dao.KindleConfig">
+  <insert id="insertSelective" parameterType="com.jude.file.bean.mail.dao.KindleConfigDO">
     insert into kindle_config
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="userId != null">
@@ -43,7 +43,7 @@
     </trim>
   </insert>
   <select id="selectByUserId" resultMap="BaseResultMap">
-    select <include refid="Base_Column_List"/>
+    select <include refid="Base_Column_List" />
     from kindle_config
     where USER_ID = #{userId,jdbcType=BIGINT}
   </select>

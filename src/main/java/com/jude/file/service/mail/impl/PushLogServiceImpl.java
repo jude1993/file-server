@@ -4,6 +4,7 @@ import com.jude.file.bean.mail.dao.PushLog;
 import com.jude.file.mapper.mail.PushLogMapper;
 import com.jude.file.service.mail.interf.PushLogService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -12,6 +13,7 @@ import java.util.List;
  * @date ：Created in 15:23 2018/8/6
  * @description：pushLog
  */
+@Service
 public class PushLogServiceImpl implements PushLogService {
 
     @Autowired
