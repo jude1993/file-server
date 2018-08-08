@@ -34,17 +34,17 @@ import java.util.Properties;
 @Service
 public class PushServiceImpl implements PushService {
 
-    @Value("mail.connect.senderAddress")
+    @Value("${mail.connect.senderAddress}")
     private String senderAddress;
-    @Value("mail.connect.senderAccount")
+    @Value("${mail.connect.senderAccount}")
     private String senderAccount;
-    @Value("mail.connect.senderToken")
+    @Value("${mail.connect.senderToken}")
     private String senderToken;
-    @Value("mail.connect.authMail")
+    @Value("${mail.args.authMail}")
     private String authMail;
-    @Value("mail.connect.protocolMail")
+    @Value("${mail.args.protocolMail}")
     private String protocolMail;
-    @Value("mail.connect.hostMail")
+    @Value("${mail.args.hostMail}")
     private String hostMail;
 
     @Autowired
@@ -59,7 +59,10 @@ public class PushServiceImpl implements PushService {
         LogUtils.info(logger,"userID={},推送{}",userId,JSON.toJSONString(mailBO));
         /*获取用户设置的邮箱*/
         KindleConfigDO kindleConfig = configMapper.selectByUserId(userId);
-        if(kindleConfig == null || !kindleConfig.getStatus()){
+        if(kindleConfig == null){
+            return ResponseBean.fail("未设置kindle邮箱",false);
+        }
+        if(!kindleConfig.getStatus()){
             pushLogService.insert(new PushLog(userId,kindleConfig.getKindleEmail(),getFileName(mailBO.getFilePath()),false,new Date(),"未将指定邮箱添加亚马逊到信任邮箱列表"));
             return ResponseBean.fail("未设置kindle邮箱",false);
         }
@@ -92,7 +95,7 @@ public class PushServiceImpl implements PushService {
     private String getFileName(List<String> filePath){
         StringBuilder sb = new StringBuilder();
         filePath.forEach(path ->{
-            sb.append(path.substring(path.lastIndexOf(System.lineSeparator()) + 1)).append("#");
+            sb.append(path.substring(path.lastIndexOf(System.getProperty("file.separator")) + 1)).append("#");
         });
         String fileName = sb.toString();
         return fileName.substring(0,fileName.length()-1);

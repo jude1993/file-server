@@ -43,9 +43,9 @@ public class MailUtils {
                 bodyPart.setFileName(MimeUtility.encodeText(dataHandler.getName()));
                 resultPart.addBodyPart(bodyPart);
             } catch (MessagingException e) {
-                LogUtils.error(logger,"文件发送失败{}"+path.substring(path.lastIndexOf(System.lineSeparator())));
+                LogUtils.error(logger,"文件发送失败{}"+path.substring(path.lastIndexOf(System.getProperty("file.separator"))));
             } catch (UnsupportedEncodingException e) {
-                LogUtils.error(logger,"不支持的编码格式{}"+path.substring(path.lastIndexOf(System.lineSeparator())));
+                LogUtils.error(logger,"不支持的编码格式{}"+path.substring(path.lastIndexOf(System.getProperty("file.separator"))));
                 e.printStackTrace();
             }
         });
