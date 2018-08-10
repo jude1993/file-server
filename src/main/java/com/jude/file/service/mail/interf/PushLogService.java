@@ -1,6 +1,6 @@
 package com.jude.file.service.mail.interf;
 
-import com.jude.file.bean.mail.dao.PushLog;
+import com.jude.file.bean.mail.dao.PushLogDO;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public interface PushLogService {
      * @param pushLog 记录
      * @return boolean
      * */
-    Boolean insert(PushLog pushLog);
+    Boolean insert(PushLogDO pushLog);
 
     /**
      * 分页获取
@@ -23,6 +23,6 @@ public interface PushLogService {
      * @param size 每页条数
      * @return List<PushLog>
      * */
-    List<PushLog> queryPage(Integer index, Integer size);
+    List<PushLogDO> queryPage(Integer index, Integer size);
 
 }

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jude.file.mapper.mail.OperationLogMapper">
+  <resultMap id="BaseResultMap" type="com.jude.file.bean.mail.dao.OperationLog">
+    <id column="ID" jdbcType="BIGINT" property="id" />
+    <result column="USER_ID" jdbcType="BIGINT" property="userId" />
+    <result column="OPERATION" jdbcType="VARCHAR" property="operation" />
+    <result column="CREATE_TIME" jdbcType="TIMESTAMP" property="pushTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    ID, USER_ID, OPERATION, CREATE_TIME
+  </sql>
+
+  <select id="queryPage" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/>
+    from operation_log
+    where user_id = #{userId} limit #{pageIndex},#{pageSize}
+  </select>
+
+  <insert id="insert">
+    insert into operation_log (USER_ID,OPERATION,CREATE_TIME)
+    values (#{userId},#{operation},#{createTime})
+  </insert>
+</mapper>

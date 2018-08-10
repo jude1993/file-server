@@ -4,11 +4,13 @@ import com.alibaba.fastjson.JSON;
 import com.jude.file.bean.ResponseBean;
 import com.jude.file.bean.mail.bo.MailBO;
 import com.jude.file.bean.mail.dao.KindleConfigDO;
-import com.jude.file.bean.mail.dao.PushLog;
+import com.jude.file.bean.mail.dao.OperationLog;
+import com.jude.file.bean.mail.dao.PushLogDO;
 import com.jude.file.common.LogUtils;
 import com.jude.file.common.MailUtils;
 import com.jude.file.mail.Constants;
 import com.jude.file.mapper.mail.KindleConfigMapper;
+import com.jude.file.service.mail.interf.OperationLogService;
 import com.jude.file.service.mail.interf.PushLogService;
 import com.jude.file.service.mail.interf.PushService;
 import org.slf4j.Logger;
@@ -51,45 +53,30 @@ public class PushServiceImpl implements PushService {
     private KindleConfigMapper configMapper;
     @Autowired
     private PushLogService pushLogService;
+    @Autowired
+    private OperationLogService operationLogService;
 
     private static final Logger logger = LoggerFactory.getLogger(PushServiceImpl.class);
 
     @Override
     public ResponseBean push(Long userId, MailBO mailBO) {
-        LogUtils.info(logger,"userID={},推送{}",userId,JSON.toJSONString(mailBO));
+        LogUtils.info(logger,"userID={},发起推送{}",userId,JSON.toJSONString(mailBO));
+        String fileName = getFileName(mailBO.getFilePath());
+        /*相关校验*/
         /*获取用户设置的邮箱*/
         KindleConfigDO kindleConfig = configMapper.selectByUserId(userId);
         if(kindleConfig == null){
+            operationLogService.insert(new OperationLog(userId,fileName+"推送失败,未设置邮箱"));
             return ResponseBean.fail("未设置kindle邮箱",false);
         }
         if(!kindleConfig.getStatus()){
-            pushLogService.insert(new PushLog(userId,kindleConfig.getKindleEmail(),getFileName(mailBO.getFilePath()),false,new Date(),"未将指定邮箱添加亚马逊到信任邮箱列表"));
+            operationLogService.insert(new OperationLog(userId,fileName+"推送失败,未设置邮箱"));
             return ResponseBean.fail("未设置kindle邮箱",false);
         }
-        /*推送*/
-        /*邮件参数*/
-        Properties arguments = new Properties();
-        arguments.put(Constants.AUTH_MAIL,authMail);
-        arguments.put(Constants.PROTOCOL_MAIL,protocolMail);
-        arguments.put(Constants.HOST_MAIL,hostMail);
-        Session session = Session.getInstance(arguments);
-        /*控制台打印调试信息*/
-        session.setDebug(true);
-        try {
-            MimeMessage mail = MailUtils.getMimeMessage(senderAddress, kindleConfig.getKindleEmail(), mailBO.getTitle(), mailBO.getMessage(), mailBO.getFilePath(), session);
-            Transport transport = session.getTransport();
-            transport.connect(senderAccount, senderToken);
-            transport.sendMessage(mail,mail.getAllRecipients());
-        } catch (MessagingException e) {
-            /*推送失败,插入日志*/
-            pushLogService.insert(new PushLog(userId,kindleConfig.getKindleEmail(),getFileName(mailBO.getFilePath()),false,new Date(),"推送出现异常"));
-            LogUtils.error(logger,"推送异常，异常信息{}",e);
-            return ResponseBean.error("推送异常",true);
-        }
-        /*推送成功,插入日志*/
-        pushLogService.insert(new PushLog(userId,kindleConfig.getKindleEmail(),getFileName(mailBO.getFilePath()),true,new Date(),"推送成功"));
-        LogUtils.info(logger,"userID={},推送成功{}",userId,JSON.toJSONString(mailBO));
-        return ResponseBean.success("推送成功",true);
+        /*异步推送*/
+        asynPush(kindleConfig,mailBO,userId);
+        operationLogService.insert(new OperationLog(userId,fileName+":发起推送"));
+        return ResponseBean.success("发起推送",true);
     }
 
     private String getFileName(List<String> filePath){
@@ -100,4 +87,38 @@ public class PushServiceImpl implements PushService {
         String fileName = sb.toString();
         return fileName.substring(0,fileName.length()-1);
     }
+
+    private void asynPush(KindleConfigDO kindleConfig, MailBO mailBO,Long userId){
+        String fileName = getFileName(mailBO.getFilePath());
+        new Thread(new Runnable(){
+            @Override
+            public void run() {
+                /*推送*/
+                /*邮件参数*/
+                Properties arguments = new Properties();
+                arguments.put(Constants.AUTH_MAIL,authMail);
+                arguments.put(Constants.PROTOCOL_MAIL,protocolMail);
+                arguments.put(Constants.HOST_MAIL,hostMail);
+
+                Session session = Session.getInstance(arguments);
+                /*控制台打印调试信息*/
+                session.setDebug(true);
+                try {
+                    MimeMessage mail = MailUtils.getMimeMessage(senderAddress, kindleConfig.getKindleEmail(), mailBO.getTitle(), mailBO.getMessage(), mailBO.getFilePath(), session);
+
+                    Transport transport = session.getTransport();
+                    transport.connect(senderAccount, senderToken);
+                    transport.sendMessage(mail,mail.getAllRecipients());
+                } catch (MessagingException e) {
+                    /*推送失败,插入日志*/
+                    operationLogService.insert(new OperationLog(userId,fileName+":推送失败"));
+                    LogUtils.error(logger,"推送异常，异常信息{}",e);
+                }
+                /*推送成功,插入日志*/
+                operationLogService.insert(new OperationLog(userId,fileName+":推送成功"));
+                pushLogService.insert(new PushLogDO(userId,kindleConfig.getKindleEmail(),fileName,false, new Date()));
+            }
+        }).start();
+  }
+
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.jude.file.mapper.mail.PushLogMapper">
-  <resultMap id="BaseResultMap" type="com.jude.file.bean.mail.dao.PushLog">
+  <resultMap id="BaseResultMap" type="com.jude.file.bean.mail.dao.PushLogDO">
     <id column="ID" jdbcType="BIGINT" property="id" />
     <result column="USER_ID" jdbcType="BIGINT" property="userId" />
     <result column="EMAIL_ADDRESS" jdbcType="VARCHAR" property="emailAddress" />
@@ -23,15 +23,15 @@
     delete from push_log
     where ID = #{id,jdbcType=BIGINT}
   </delete>
-  <insert id="insert" parameterType="com.jude.file.bean.mail.dao.PushLog">
+  <insert id="insert" parameterType="com.jude.file.bean.mail.dao.PushLogDO">
     insert into push_log (ID, USER_ID, EMAIL_ADDRESS,
-      FILE_NAME, SUCCESS, PUSH_TIME, 
+      FILE_NAME, SUCCESS, PUSH_TIME,
       RETRY)
     values (#{id,jdbcType=BIGINT}, #{userId,jdbcType=BIGINT}, #{emailAddress,jdbcType=VARCHAR},
       #{fileName,jdbcType=VARCHAR}, #{success,jdbcType=BIT}, #{pushTime,jdbcType=TIMESTAMP},
       #{retry,jdbcType=INTEGER})
   </insert>
-  <insert id="insertSelective" parameterType="com.jude.file.bean.mail.dao.PushLog">
+  <insert id="insertSelective" parameterType="com.jude.file.bean.mail.dao.PushLogDO">
     insert into push_log
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -80,7 +80,7 @@
       </if>
     </trim>
   </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.jude.file.bean.mail.dao.PushLog">
+  <update id="updateByPrimaryKeySelective" parameterType="com.jude.file.bean.mail.dao.PushLogDO">
     update push_log
     <set>
       <if test="userId != null">
@@ -104,7 +104,7 @@
     </set>
     where ID = #{id,jdbcType=BIGINT}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.jude.file.bean.mail.dao.PushLog">
+  <update id="updateByPrimaryKey" parameterType="com.jude.file.bean.mail.dao.PushLogDO">
     update push_log
     set USER_ID = #{userId,jdbcType=BIGINT},
       EMAIL_ADDRESS = #{emailAddress,jdbcType=VARCHAR},

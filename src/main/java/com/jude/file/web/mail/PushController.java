@@ -38,7 +38,7 @@ public class PushController {
         KindleConfigDO kindleConfigDO = kindleConfig.to();
         boolean result = kindleConfigService.config(kindleConfigDO);
         if(result){
-            return ResponseBean.success("成功",result);
+            return ResponseBean.success("成功",true);
         }else {
             return ResponseBean.fail("失败",false);
         }

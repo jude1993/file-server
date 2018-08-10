@@ -12,7 +12,7 @@ import java.util.Date;
 @Getter
 @Setter
 @ToString
-public class PushLog {
+public class PushLogDO {
     private Long id;
 
     private Long userId;
@@ -27,14 +27,11 @@ public class PushLog {
 
     private Integer retry;
 
-    private String content;
-
-    public PushLog(Long userId, String emailAddress, String fileName, Boolean success, Date pushTime, String content){
+    public PushLogDO(Long userId, String emailAddress, String fileName, Boolean success, Date pushTime){
         this.userId = userId;
         this.emailAddress = emailAddress;
         this.fileName = fileName;
-        this.success = success;
         this.pushTime = pushTime;
-        this.content = content;
+        this.success = success;
     }
 }

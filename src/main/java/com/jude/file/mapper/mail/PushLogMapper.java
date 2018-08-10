@@ -1,6 +1,6 @@
 package com.jude.file.mapper.mail;
 
-import com.jude.file.bean.mail.dao.PushLog;
+import com.jude.file.bean.mail.dao.PushLogDO;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -8,15 +8,15 @@ import java.util.List;
 public interface PushLogMapper {
     int deleteByPrimaryKey(Long id);
 
-    int insert(PushLog record);
+    int insert(PushLogDO record);
 
-    int insertSelective(PushLog record);
+    int insertSelective(PushLogDO record);
 
-    PushLog selectByPrimaryKey(Long id);
+    PushLogDO selectByPrimaryKey(Long id);
 
-    int updateByPrimaryKeySelective(PushLog record);
+    int updateByPrimaryKeySelective(PushLogDO record);
 
-    int updateByPrimaryKey(PushLog record);
+    int updateByPrimaryKey(PushLogDO record);
 
-    List<PushLog> queryPage(@Param("index") Integer index, @Param("size") Integer size);
+    List<PushLogDO> queryPage(@Param("index") Integer index, @Param("size") Integer size);
 }
