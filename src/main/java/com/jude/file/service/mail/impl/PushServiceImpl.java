@@ -90,34 +90,31 @@ public class PushServiceImpl implements PushService {
 
     private void asynPush(KindleConfigDO kindleConfig, MailBO mailBO,Long userId){
         String fileName = getFileName(mailBO.getFilePath());
-        new Thread(new Runnable(){
-            @Override
-            public void run() {
-                /*推送*/
-                /*邮件参数*/
-                Properties arguments = new Properties();
-                arguments.put(Constants.AUTH_MAIL,authMail);
-                arguments.put(Constants.PROTOCOL_MAIL,protocolMail);
-                arguments.put(Constants.HOST_MAIL,hostMail);
+        new Thread(() -> {
+            /*推送*/
+            /*邮件参数*/
+            Properties arguments = new Properties();
+            arguments.put(Constants.AUTH_MAIL,authMail);
+            arguments.put(Constants.PROTOCOL_MAIL,protocolMail);
+            arguments.put(Constants.HOST_MAIL,hostMail);
 
-                Session session = Session.getInstance(arguments);
-                /*控制台打印调试信息*/
-                session.setDebug(true);
-                try {
-                    MimeMessage mail = MailUtils.getMimeMessage(senderAddress, kindleConfig.getKindleEmail(), mailBO.getTitle(), mailBO.getMessage(), mailBO.getFilePath(), session);
+            Session session = Session.getInstance(arguments);
+            /*控制台打印调试信息*/
+            session.setDebug(true);
+            try {
+                MimeMessage mail = MailUtils.getMimeMessage(senderAddress, kindleConfig.getKindleEmail(), mailBO.getTitle(), mailBO.getMessage(), mailBO.getFilePath(), session);
 
-                    Transport transport = session.getTransport();
-                    transport.connect(senderAccount, senderToken);
-                    transport.sendMessage(mail,mail.getAllRecipients());
-                } catch (MessagingException e) {
-                    /*推送失败,插入日志*/
-                    operationLogService.insert(new OperationLog(userId,fileName+":推送失败"));
-                    LogUtils.error(logger,"推送异常，异常信息{}",e);
-                }
-                /*推送成功,插入日志*/
-                operationLogService.insert(new OperationLog(userId,fileName+":推送成功"));
-                pushLogService.insert(new PushLogDO(userId,kindleConfig.getKindleEmail(),fileName,false, new Date()));
+                Transport transport = session.getTransport();
+                transport.connect(senderAccount, senderToken);
+                transport.sendMessage(mail,mail.getAllRecipients());
+            } catch (MessagingException e) {
+                /*推送失败,插入日志*/
+                operationLogService.insert(new OperationLog(userId,fileName+":推送失败"));
+                LogUtils.error(logger,"推送异常，异常信息{}",e);
             }
+            /*推送成功,插入日志*/
+            operationLogService.insert(new OperationLog(userId,fileName+":推送成功"));
+            pushLogService.insert(new PushLogDO(userId,kindleConfig.getKindleEmail(),fileName,false, new Date()));
         }).start();
   }
 

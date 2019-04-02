@@ -7,6 +7,8 @@ import com.jude.file.service.file.interf.DocumentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 @Service
 public class DocumentServiceImpl implements DocumentService {
 
@@ -19,6 +21,7 @@ public class DocumentServiceImpl implements DocumentService {
 
     @Override
     public int insert(DocumentDO documentDO) {
+        ReentrantLock reentrantLock = new ReentrantLock();
         return documentDOMapper.insert(documentDO);
     }
 }
