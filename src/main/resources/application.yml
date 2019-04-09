@@ -12,7 +12,7 @@ server:
 #数据源
 spring:
   datasource:
-    url: jdbc:mysql://111.231.66.26:3306/file_server?useUnicode=true&characterEncoding=utf8&useSSL=false
+    url: jdbc:mysql://tengxun.com:3306/file_server?useUnicode=true&characterEncoding=utf8&useSSL=false
     username: root
     password: jude1993
     driver-class-name: com.mysql.jdbc.Driver

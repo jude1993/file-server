@@ -1,0 +1,10 @@
+spring:
+  rabbitmq:
+    host: 111.231.66.26
+    port: 15673
+    username: admin
+    password: admin
+    listener:
+      concurrency: 10 #并发数
+      max-concurrency: 20 #最大并发数
+      prefetch: 5 #每次监听可拉去消息数量
